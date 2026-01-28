@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fields name="field">
+		<fieldset name="basic" label="MOD_DC_BRIEF_FIELD_FIELDSET">
+			<field name="label" type="text" label="MOD_DC_BRIEF_FIELD_LABEL_LABEL" description="MOD_DC_BRIEF_FIELD_LABEL_DESC" required="true" />
+			<field name="id" type="text" label="MOD_DC_BRIEF_FIELD_ID_LABEL" description="MOD_DC_BRIEF_FIELD_ID_DESC" required="true" />
+			<field name="type" type="list" label="MOD_DC_BRIEF_FIELD_TYPE_LABEL" description="MOD_DC_BRIEF_FIELD_TYPE_DESC" default="input">
+				<option value="input">MOD_DC_BRIEF_FIELD_TYPE_INPUT</option>
+				<option value="number">MOD_DC_BRIEF_FIELD_TYPE_NUMBER</option>
+				<option value="integer">MOD_DC_BRIEF_FIELD_TYPE_INTEGER</option>
+				<option value="textarea">MOD_DC_BRIEF_FIELD_TYPE_TEXTAREA</option>
+				<option value="select">MOD_DC_BRIEF_FIELD_TYPE_SELECT</option>
+				<option value="checkbox">MOD_DC_BRIEF_FIELD_TYPE_CHECKBOX</option>
+				<option value="checkboxes">MOD_DC_BRIEF_FIELD_TYPE_CHECKBOXES</option>
+				<option value="radio">MOD_DC_BRIEF_FIELD_TYPE_RADIO</option>
+			</field>
+			<field name="value" type="text" label="MOD_DC_BRIEF_FIELD_VALUE_LABEL" description="MOD_DC_BRIEF_FIELD_VALUE_DESC" />
+			<field name="help" type="textarea" label="MOD_DC_BRIEF_FIELD_HELP_LABEL" description="MOD_DC_BRIEF_FIELD_HELP_DESC" rows="2" />
+			<field name="options" type="textarea" label="MOD_DC_BRIEF_FIELD_OPTIONS_LABEL" description="MOD_DC_BRIEF_FIELD_OPTIONS_DESC" rows="4" />
+			<field name="required" type="checkbox" label="MOD_DC_BRIEF_FIELD_REQUIRED" description="MOD_DC_BRIEF_FIELD_REQUIRED" />
+		</fieldset>
+	</fields>
+</form>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fields name="group">
+		<fieldset name="basic" label="MOD_DC_BRIEF_GROUP_FIELDSET">
+			<field name="title" type="text" label="MOD_DC_BRIEF_GROUP_TITLE_LABEL" description="MOD_DC_BRIEF_GROUP_TITLE_DESC" required="true" />
+			<field name="description" type="textarea" label="MOD_DC_BRIEF_GROUP_DESC_LABEL" description="MOD_DC_BRIEF_GROUP_DESC_DESC" rows="3" />
+		</fieldset>
+		<fieldset name="fields" label="MOD_DC_BRIEF_GROUP_FIELDS_LABEL">
+			<field name="fields" type="subform" label="MOD_DC_BRIEF_GROUP_FIELDS_LABEL" description="MOD_DC_BRIEF_GROUP_FIELDS_DESC" multiple="true" formsource="modules/mod_dc_brief/forms/field.xml" layout="joomla.form.field.subform.repeatable-table" />
+		</fieldset>
+	</fields>
+</form>

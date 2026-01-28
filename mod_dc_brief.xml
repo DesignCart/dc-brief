@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" client="site" method="upgrade">
+	<name>MOD_DC_BRIEF</name>
+	<author>Design Cart</author>
+	<version>1.0.0</version>
+	<description>MOD_DC_BRIEF_DESC</description>
+
+	<files>
+		<filename module="mod_dc_brief">mod_dc_brief.php</filename>
+		<filename>helper.php</filename>
+		<folder>tmpl</folder>
+		<folder>assets</folder>
+	</files>
+
+	<languages>
+	  <language tag="pl-PL">language/pl-PL/mod_dc_brief.ini</language>
+	  <language tag="pl-PL">language/pl-PL/mod_dc_brief.sys.ini</language>
+	  <language tag="en-GB">language/en-GB/mod_dc_brief.ini</language>
+	  <language tag="en-GB">language/en-GB/mod_dc_brief.sys.ini</language>
+	</languages>
+
+	<config>
+		<fields name="params">
+
+			<!-- Zakładka 1: Treść modułu / przycisk -->
+			<fieldset name="content" label="MOD_BRIEF_TAB_CONTENT">
+				<field name="module_title" type="text" label="MOD_BRIEF_FIELD_MODULE_TITLE_LABEL" description="MOD_BRIEF_FIELD_MODULE_TITLE_DESC" />
+				<field name="module_desc" type="textarea" label="MOD_BRIEF_FIELD_MODULE_DESC_LABEL" description="MOD_BRIEF_FIELD_MODULE_DESC_DESC" rows="4" />
+				<field name="open_btn_label" type="text" label="MOD_BRIEF_FIELD_OPEN_BTN_LABEL" description="MOD_BRIEF_FIELD_OPEN_BTN_DESC" default="MOD_BRIEF_DEFAULT_OPEN_BTN_LABEL" />
+			</fieldset>
+
+			<!-- Zakładka 2: Modal -->
+			<fieldset name="modal" label="MOD_BRIEF_TAB_MODAL">
+				<field name="modal_title" type="text" label="MOD_BRIEF_FIELD_MODAL_TITLE_LABEL" description="MOD_BRIEF_FIELD_MODAL_TITLE_DESC" default="MOD_BRIEF_DEFAULT_MODAL_TITLE" />
+				<field name="modal_desc" type="textarea" label="MOD_BRIEF_FIELD_MODAL_DESC_LABEL" description="MOD_BRIEF_FIELD_MODAL_DESC_DESC" rows="4" />
+				<field name="btn_cancel" type="text" label="MOD_BRIEF_FIELD_BTN_CANCEL_LABEL" description="MOD_BRIEF_FIELD_BTN_CANCEL_DESC" default="MOD_BRIEF_DEFAULT_BTN_CANCEL" />
+				<field name="btn_submit" type="text" label="MOD_BRIEF_FIELD_BTN_SUBMIT_LABEL" description="MOD_BRIEF_FIELD_BTN_SUBMIT_DESC" default="MOD_BRIEF_DEFAULT_BTN_SUBMIT" />
+				<field name="input_error" type="text" label="MOD_DC_BRIEF_FIELD_INPUT_ERROR_LABEL" description="MOD_DC_BRIEF_FIELD_INPUT_ERROR_DESC" />
+			</fieldset>
+
+			<!-- Zakładka 3: Design (moduł + przycisk otwierający) -->
+			<fieldset name="design" label="MOD_BRIEF_TAB_DESIGN">
+				<field name="mod_bg" type="color" label="MOD_BRIEF_FIELD_MOD_BG_LABEL" description="MOD_BRIEF_FIELD_MOD_BG_DESC" />
+				<field name="mod_title_color" type="color" label="MOD_BRIEF_FIELD_MOD_TITLE_COLOR_LABEL" description="MOD_BRIEF_FIELD_MOD_TITLE_COLOR_DESC" />
+				<field name="mod_desc_color" type="color" label="MOD_BRIEF_FIELD_MOD_DESC_COLOR_LABEL" description="MOD_BRIEF_FIELD_MOD_DESC_COLOR_DESC" />
+				<field name="mod_title_size" type="number" label="MOD_BRIEF_FIELD_MOD_TITLE_SIZE_LABEL" description="MOD_BRIEF_FIELD_MOD_TITLE_SIZE_DESC" />
+				<field name="mod_desc_size" type="number" label="MOD_BRIEF_FIELD_MOD_DESC_SIZE_LABEL" description="MOD_BRIEF_FIELD_MOD_DESC_SIZE_DESC" />
+				<field name="open_btn_bg" type="color" label="MOD_BRIEF_FIELD_OPEN_BTN_BG_LABEL" description="MOD_BRIEF_FIELD_OPEN_BTN_BG_DESC" />
+				<field name="open_btn_bg_hover" type="color" label="MOD_BRIEF_FIELD_OPEN_BTN_BG_HOVER_LABEL" description="MOD_BRIEF_FIELD_OPEN_BTN_BG_HOVER_DESC" />
+				<field name="open_btn_color" type="color" label="MOD_BRIEF_FIELD_OPEN_BTN_COLOR_LABEL" description="MOD_BRIEF_FIELD_OPEN_BTN_COLOR_DESC" />
+				<field name="open_btn_color_hover" type="color" label="MOD_BRIEF_FIELD_OPEN_BTN_COLOR_HOVER_LABEL" description="MOD_BRIEF_FIELD_OPEN_BTN_COLOR_HOVER_DESC" />
+				<field name="open_btn_size" type="number" label="MOD_BRIEF_FIELD_OPEN_BTN_SIZE_LABEL" description="MOD_BRIEF_FIELD_OPEN_BTN_SIZE_DESC" />
+			</fieldset>
+
+			<!-- Zakładka 4: Design modal (tytuł/opis + przyciski) -->
+			<fieldset name="design_modal" label="MOD_BRIEF_TAB_DESIGN_MODAL">
+				<field name="modal_title_color" type="color" label="MOD_BRIEF_FIELD_MODAL_TITLE_COLOR_LABEL" description="MOD_BRIEF_FIELD_MODAL_TITLE_COLOR_DESC" />
+				<field name="modal_desc_color" type="color" label="MOD_BRIEF_FIELD_MODAL_DESC_COLOR_LABEL" description="MOD_BRIEF_FIELD_MODAL_DESC_COLOR_DESC" />
+				<field name="modal_title_size" type="number" label="MOD_BRIEF_FIELD_MODAL_TITLE_SIZE_LABEL" description="MOD_BRIEF_FIELD_MODAL_TITLE_SIZE_DESC" />
+				<field name="modal_desc_size" type="number" label="MOD_BRIEF_FIELD_MODAL_DESC_SIZE_LABEL" description="MOD_BRIEF_FIELD_MODAL_DESC_SIZE_DESC" />
+				<field name="cancel_btn_bg" type="color" label="MOD_BRIEF_FIELD_CANCEL_BTN_BG_LABEL" description="MOD_BRIEF_FIELD_CANCEL_BTN_BG_DESC" />
+				<field name="cancel_btn_bg_hover" type="color" label="MOD_BRIEF_FIELD_CANCEL_BTN_BG_HOVER_LABEL" description="MOD_BRIEF_FIELD_CANCEL_BTN_BG_HOVER_DESC" />
+				<field name="cancel_btn_color" type="color" label="MOD_BRIEF_FIELD_CANCEL_BTN_COLOR_LABEL" description="MOD_BRIEF_FIELD_CANCEL_BTN_COLOR_DESC" />
+				<field name="cancel_btn_color_hover" type="color" label="MOD_BRIEF_FIELD_CANCEL_BTN_COLOR_HOVER_LABEL" description="MOD_BRIEF_FIELD_CANCEL_BTN_COLOR_HOVER_DESC" />
+				<field name="cancel_btn_size" type="number" label="MOD_BRIEF_FIELD_CANCEL_BTN_SIZE_LABEL" description="MOD_BRIEF_FIELD_CANCEL_BTN_SIZE_DESC" />
+				<field name="submit_btn_bg" type="color" label="MOD_BRIEF_FIELD_SUBMIT_BTN_BG_LABEL" description="MOD_BRIEF_FIELD_SUBMIT_BTN_BG_DESC" />
+				<field name="submit_btn_bg_hover" type="color" label="MOD_BRIEF_FIELD_SUBMIT_BTN_BG_HOVER_LABEL" description="MOD_BRIEF_FIELD_SUBMIT_BTN_BG_HOVER_DESC" />
+				<field name="submit_btn_color" type="color" label="MOD_BRIEF_FIELD_SUBMIT_BTN_COLOR_LABEL" description="MOD_BRIEF_FIELD_SUBMIT_BTN_COLOR_DESC" />
+				<field name="submit_btn_color_hover" type="color" label="MOD_BRIEF_FIELD_SUBMIT_BTN_COLOR_HOVER_LABEL" description="MOD_BRIEF_FIELD_SUBMIT_BTN_COLOR_HOVER_DESC" />
+				<field name="submit_btn_size" type="number" label="MOD_BRIEF_FIELD_SUBMIT_BTN_SIZE_LABEL" description="MOD_BRIEF_FIELD_SUBMIT_BTN_SIZE_DESC" />
+			</fieldset>
+
+			<!-- Zakładka 5: Design form -->
+			<fieldset name="design_form" label="MOD_BRIEF_TAB_DESIGN_FORM">
+				<field name="label_color" type="color" label="MOD_BRIEF_FIELD_LABEL_COLOR_LABEL" description="MOD_BRIEF_FIELD_LABEL_COLOR_DESC" />
+				<field name="label_size" type="number" label="MOD_BRIEF_FIELD_LABEL_SIZE_LABEL" description="MOD_BRIEF_FIELD_LABEL_SIZE_DESC" />
+				<field name="input_bg" type="color" label="MOD_BRIEF_FIELD_INPUT_BG_LABEL" description="MOD_BRIEF_FIELD_INPUT_BG_DESC" />
+				<field name="input_border" type="color" label="MOD_BRIEF_FIELD_INPUT_BORDER_LABEL" description="MOD_BRIEF_FIELD_INPUT_BORDER_DESC" />
+				<field name="input_text_color" type="color" label="MOD_BRIEF_FIELD_INPUT_TEXT_COLOR_LABEL" description="MOD_BRIEF_FIELD_INPUT_TEXT_COLOR_DESC" />
+				<field name="input_text_size" type="number" label="MOD_BRIEF_FIELD_INPUT_TEXT_SIZE_LABEL" description="MOD_BRIEF_FIELD_INPUT_TEXT_SIZE_DESC" />
+				<field name="input_radius" type="number" label="MOD_BRIEF_FIELD_INPUT_RADIUS_LABEL" description="MOD_BRIEF_FIELD_INPUT_RADIUS_DESC" />
+				<field name="input_padding_y" type="number" label="MOD_BRIEF_FIELD_INPUT_PADDING_Y_LABEL" description="MOD_BRIEF_FIELD_INPUT_PADDING_Y_DESC" />
+				<field name="input_padding_x" type="number" label="MOD_BRIEF_FIELD_INPUT_PADDING_X_LABEL" description="MOD_BRIEF_FIELD_INPUT_PADDING_X_DESC" />
+			</fieldset>
+			<fieldset name="brief_form" label="MOD_DC_BRIEF_TAB_FORM">
+  				<field name="groups" type="subform" label="MOD_DC_BRIEF_FIELD_GROUPS_LABEL" description="MOD_DC_BRIEF_FIELD_GROUPS_DESC" multiple="true" formsource="modules/mod_dc_brief/forms/group.xml" layout="joomla.form.field.subform.repeatable" />
+
+			</fieldset>
+
+			<fieldset name="mail" label="MOD_DC_BRIEF_TAB_MAIL">
+				<field name="mail_to" type="email" label="MOD_DC_BRIEF_FIELD_MAIL_TO_LABEL" description="MOD_DC_BRIEF_FIELD_MAIL_TO_DESC" required="true" />
+				<field name="mail_subject" type="text" label="MOD_DC_BRIEF_FIELD_MAIL_SUBJECT_LABEL" description="MOD_DC_BRIEF_FIELD_MAIL_SUBJECT_DESC" default="MOD_DC_BRIEF_DEFAULT_MAIL_SUBJECT" />
+				<field name="mail_intro" type="editor" label="MOD_DC_BRIEF_FIELD_MAIL_INTRO_LABEL" description="MOD_DC_BRIEF_FIELD_MAIL_INTRO_DESC" filter="safehtml" buttons="false" />
+				<field name="mail_success" type="text" label="MOD_DC_BRIEF_FIELD_MAIL_SUCCESS" description="MOD_DC_BRIEF_FIELD_MAIL_SUCCESS" filter="safehtml" buttons="false" />
+				<field name="mail_error" type="text" label="MOD_DC_BRIEF_FIELD_MAIL_ERROR" description="MOD_DC_BRIEF_FIELD_MAIL_ERROR" filter="safehtml" buttons="false" />
+			</fieldset>
+		</fields>
+  	</config>
+</extension>

@@ -1,0 +1,460 @@
+.dc-mod-brief{
+		text-align: center;
+		padding: 40px 0px;
+}
+
+/* ===========================
+	 DC BRIEF – BUTTON
+=========================== */
+.dc-brief__btn{
+	display:inline-flex;
+	align-items:center;
+	justify-content:center;
+	padding:12px 18px;
+	border-radius:12px;
+	border:0;
+	cursor:pointer;
+	background:#1ca6ca !important;
+	color:#fff  !important;
+	font-size:20px;
+	line-height:1;
+}
+
+
+/* ===========================
+   MODAL WRAPPER
+   (jak w jVideo: bez display:none – sterujemy pointer-events/opacity)
+=========================== */
+.dc-brief__modal{
+	position:fixed;
+	inset:0;
+	isolation: isolate;
+	z-index:9999;
+
+	/* zamiast display:none */
+	pointer-events:none;
+	opacity:0;
+
+	display:flex;
+	align-items:center;
+	justify-content:center;
+
+	padding:24px;
+	width:100vw;
+	height:100vh;
+}
+
+/* OPEN */
+.dc-brief__modal.is-open{
+	pointer-events:auto;
+	opacity:1;
+}
+
+
+/* ===========================
+   BACKDROP – CIRCLE REVEAL (scale)
+=========================== */
+.dc-brief__backdrop{
+	position:fixed;
+	left:50%;
+	top:50%;
+
+	width:40px;
+	height:40px;
+	border-radius:50%;
+
+	/* gradient animowany */
+	background: linear-gradient(
+		120deg,
+		rgba(0,126,195,.90),
+		rgba(30,162,139,.90),
+		rgba(0,126,195,.90)
+	);
+	background-size:300% 300%;
+	animation: dcQuizGradient 10s ease infinite;
+
+	transform: translate(-50%, -50%) scale(0);
+	transition: transform 0.7s ease-in-out;
+
+	z-index:1;
+}
+
+/* OPEN – koło rośnie i zasłania ekran */
+.dc-brief__modal.is-open .dc-brief__backdrop{
+	transform: translate(-50%, -50%) scale(80);
+}
+
+
+.dc-brief__panel{
+	position:relative;
+	width:100%;
+	max-width:980px;
+
+	/* klucz: ograniczamy wysokość panelu do ekranu */
+	height: calc(100vh - 48px);   /* zostawia oddech na padding modala */
+	max-height: calc(100vh - 48px);
+
+	display:flex;
+	align-items:stretch;          /* nie centrowanie, bo to psuje scroll */
+	justify-content:center;
+
+	box-sizing:border-box;
+	z-index:2;
+}
+
+/* KARTA: flex + ograniczenie wysokości */
+.dc-brief__content{
+	width:100%;
+	display:flex;
+	flex-direction:column;
+
+	border-radius:8px;
+	background:rgba(0,0,0,.28);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	border:1px solid rgba(255,255,255,.14);
+	color:#fff;
+	box-shadow: 0 0 25px 0 rgba(0,0,0,0.2);
+
+	/* klucz: karta też ma limit wysokości */
+	height: 100%;
+	max-height: 100%;
+	padding:15px;
+
+	/* animacja */
+	opacity:0;
+	transform: translateY(100vh);
+}
+
+/* SCROLL tylko tu */
+.dc-brief__content-inner{
+	padding:28px 22px;
+
+	/* klucz: to tworzy obszar scroll */
+	flex:1 1 auto;
+	min-height:0;
+
+	overflow-y:auto;
+	-webkit-overflow-scrolling: touch;
+}
+
+/* opcjonalnie: ładniejszy scroll */
+.dc-brief__content-inner::-webkit-scrollbar{
+	width:10px;
+}
+.dc-brief__content-inner::-webkit-scrollbar-thumb{
+	background: rgba(255,255,255,.18);
+	border-radius:10px;
+}
+.dc-brief__content-inner::-webkit-scrollbar-track{
+	background: rgba(255,255,255,.06);
+}
+
+/* OPEN animacja contentu */
+.dc-brief__modal.is-open .dc-brief__content{
+	animation: dcQuizBounceIn 0.7s cubic-bezier(.34,1.56,.64,1) forwards;
+}
+.dc-brief__modal.is-closing{
+	pointer-events:none;
+	opacity:1; /* ważne: nie gaś opacity w trakcie animacji */
+}
+/* backdrop ma się zwijać (wraca do scale(0)) */
+.dc-brief__modal.is-closing .dc-brief__backdrop{
+	transform: translate(-50%, -50%) scale(0);
+}
+/* CLOSE animacja contentu */
+.dc-brief__modal.is-closing .dc-brief__content{
+	animation: dcQuizSlideOut 0.4s ease-in forwards;
+}
+
+/* ===========================
+	 MODAL
+=========================== */
+.dc-brief__modal-footer{
+	text-align: right;
+	margin-top: 25px;
+}
+
+
+/* ===========================
+   CLOSE BUTTON
+=========================== */
+.dc-brief__close{
+	position:absolute;
+	top:18px;
+	right:18px;
+	width:48px;
+	height:48px;
+	border-radius:999px;
+	border:1px solid rgba(255,255,255,.22);
+	background:rgba(0,0,0,.25);
+	color:#fff;
+	cursor:pointer;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	z-index:3;
+}
+
+.dc-brief__close:hover{
+	background:rgba(0,0,0,.38);
+}
+
+
+/* ===========================
+   ANIMATIONS
+=========================== */
+@keyframes dcQuizGradient{
+	0%{ background-position:0% 50%; }
+	50%{ background-position:100% 50%; }
+	100%{ background-position:0% 50%; }
+}
+
+@keyframes dcQuizBounceIn{
+	0%   { transform: translateY(100vh); opacity:0; }
+	70%  { transform: translateY(-20px); opacity:1; }
+	100% { transform: translateY(0); opacity:1; }
+}
+
+@keyframes dcQuizSlideOut{
+	0%   { transform: translateY(0); opacity:1; }
+	100% { transform: translateY(100vh); opacity:0; }
+}
+
+/* ===========================
+	 FORM
+=========================== */
+.dc-brief-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  text-align: left;
+	margin-top: 20px;
+}
+
+/* =========================
+   GROUP
+========================= */
+.dc-brief-form__group {
+  padding: 16px;
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 12px;
+	background: rgba(255,255,255,.1);
+}
+
+.dc-brief-form__group-title {
+  margin: 0 0 6px 0;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.dc-brief-form__group-desc {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  opacity: .85;
+}
+
+/* =========================
+   FIELDS WRAPPER
+========================= */
+.dc-brief-form__fields {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* =========================
+   FIELD BASE
+========================= */
+.dc-brief-form__field {
+  width: 100%;
+	border-bottom: 1px background: rgba(0,0,0,.1);
+}
+
+/* =========================
+   ONE LINE FIELDS
+   input / number / integer / select
+========================= */
+.dc-brief-form__field--input,
+.dc-brief-form__field--number,
+.dc-brief-form__field--integer,
+.dc-brief-form__field--select {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* label left */
+.dc-brief-form__field--input .dc-brief-form__label,
+.dc-brief-form__field--number .dc-brief-form__label,
+.dc-brief-form__field--integer .dc-brief-form__label,
+.dc-brief-form__field--select .dc-brief-form__label {
+  flex: 0 0 220px;
+  margin: 0;
+  font-weight: 600;
+}
+
+/* input right */
+.dc-brief-form__field--input input,
+.dc-brief-form__field--number input,
+.dc-brief-form__field--integer input,
+.dc-brief-form__field--select select {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* help aligned under input */
+.dc-brief-form__field--input .dc-brief-form__help,
+.dc-brief-form__field--number .dc-brief-form__help,
+.dc-brief-form__field--integer .dc-brief-form__help,
+.dc-brief-form__field--select .dc-brief-form__help {
+  margin-left: calc(220px + 14px);
+}
+
+/* =========================
+   TEXTAREA (STACKED)
+========================= */
+.dc-brief-form__field--textarea {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.dc-brief-form__field--textarea .dc-brief-form__label {
+  font-weight: 600;
+}
+
+/* =========================
+   SINGLE CHECKBOX
+========================= */
+.dc-brief-form__checkbox-one {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dc-brief-form__checkbox-one input {
+  width: 18px;
+  height: 18px;
+}
+
+.dc-brief-form__checkbox-one label {
+  margin: 0;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* =========================
+   RADIO / CHECKBOXES GROUP
+========================= */
+.dc-brief-form__field--radio,
+.dc-brief-form__field--checkboxes {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dc-brief-form__field--radio .dc-brief-form__label,
+.dc-brief-form__field--checkboxes .dc-brief-form__label {
+  font-weight: 600;
+}
+
+/* options row */
+.dc-brief-form__options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  align-items: center;
+}
+
+/* single option */
+.dc-brief-form__option {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,.15);
+  background: rgba(255,255,255,.6);
+}
+
+.dc-brief-form__option:hover {
+  background: rgba(255,255,255,.9);
+  border-color: rgba(0,0,0,.3);
+}
+
+/* =========================
+   INPUTS VISUAL (spójne z brief-css.php)
+========================= */
+.dc-brief-form input:focus,
+.dc-brief-form textarea:focus,
+.dc-brief-form select:focus {
+  border-color: rgba(0,0,0,.35);
+  box-shadow: 0 0 0 3px rgba(0,0,0,.08);
+}
+.dc-brief-form__required {
+  color: #c00;
+  margin-left: 4px;
+  font-weight: 700;
+}
+
+.dc-brief-form__field--error input,
+.dc-brief-form__field--error textarea,
+.dc-brief-form__field--error select {
+	border-color: #d00 !important;
+	box-shadow: 0 0 0 2px rgba(220,0,0,.2);
+}
+
+.dc-brief-form__error {
+	margin-top: 4px;
+	font-size: 12px;
+	color: #d00;
+	font-weight: 600;
+}
+/* =========================
+   HELP
+========================= */
+.dc-brief-form__help {
+	font-size: 12px;
+}
+
+/* =========================
+	 BUTTONS
+========================= */
+.dc-mod-brief__open-btn,
+.dc-brief-modal__btn-cancel,
+.dc-brief-modal__btn-submit{
+		padding: 10px 20px;
+		border:none;
+		border-radius: 7px;
+		font-size: 16px;
+		transition: all 0.3s ease;
+}
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 640px) {
+  .dc-brief-form__field--input,
+  .dc-brief-form__field--number,
+  .dc-brief-form__field--integer,
+  .dc-brief-form__field--select {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+  }
+
+  .dc-brief-form__field--input .dc-brief-form__label,
+  .dc-brief-form__field--number .dc-brief-form__label,
+  .dc-brief-form__field--integer .dc-brief-form__label,
+  .dc-brief-form__field--select .dc-brief-form__label {
+    flex: 0 0 auto;
+  }
+
+  .dc-brief-form__field--input .dc-brief-form__help,
+  .dc-brief-form__field--number .dc-brief-form__help,
+  .dc-brief-form__field--integer .dc-brief-form__help,
+  .dc-brief-form__field--select .dc-brief-form__help {
+    margin-left: 0;
+  }
+}

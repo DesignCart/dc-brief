@@ -9,6 +9,8 @@
 		<filename module="mod_dc_brief">mod_dc_brief.php</filename>
 		<filename>helper.php</filename>
 		<folder>tmpl</folder>
+		<folder>cache</folder>
+		<folder>forms</folder>
 		<folder>assets</folder>
 	</files>
 

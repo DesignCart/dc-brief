@@ -59,9 +59,6 @@
 	<input type="hidden" name="mail_to" value="<?php echo htmlspecialchars($data['mail_to'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" />
 	<input type="hidden" name="mail_subject" value="<?php echo htmlspecialchars($data['mail_subject'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" />
 	<input type="hidden" name="mail_intro" value="<?php echo htmlspecialchars($data['mail_intro'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" />
-
-	<?php if (!empty($data['captcha_v3_sitekey'])): ?>
-		<input type="hidden" name="g-recaptcha-response" value="">
-	<?php endif; ?>
 </form>
+
 

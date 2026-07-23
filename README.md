@@ -60,5 +60,7 @@ Full configuration guide and examples are available here:
 DC BRIEF helps you receive **better, more complete inquiries**, reduces back-and-forth communication, and provides a modern, polished user experience right from the first contact.
 
 ---
-
-Made with ❤️ for Joomla
+<hr>
+<p>🌐 website: <a href="https://www.designcart.pl/">Design Cart</a>
+<p>👨‍💻 author: <a href="https://www.designcart.pl/pawel-nosko.html">Paweł Nosko</a></p>
+<p>Made with ❤️ for Joomla</p>
